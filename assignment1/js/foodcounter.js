@@ -2,7 +2,11 @@
   'use strict'
   angular.module('counterApp', [])
 
-  .controller('foodController', function ($scope, $filter) {
+  .controller('foodController', FoodController);
+
+  FoodController.$inject = ['$scope', '$filter'];
+
+  function FoodController ($scope, $filter) {
     $scope.foodList = "";
     $scope.mealResult = '';
 
@@ -38,5 +42,5 @@
         $scope.mealResult = 'Too much!';
         }
       }
-  });
+    }
 })();
