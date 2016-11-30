@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app="counterApp">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="styles/style.css" >
+    <script src="js/angular.min.js" ></script>
+    <script src="js/foodcounter.js" ></script>
+  </head>
+<body>
+   <div class="container" ng-controller="foodController">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input id="lunch-menu" type="text"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control"
+             ng-class="mealInputBorder"
+             ng-model="foodList">
+             (NOTE: Blank space or nothing between ','s is not counted as an item)
+         </div>
+         <h4 ng-class="mealResultColour">{{mealResult}}</h4>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="countItems()">Check If Too Much</button>
+         </div>
+         <div class="form-group message">
+           <!-- Your message can go here. -->
+         </div>
+   </div>
+
+</body>
+</html>

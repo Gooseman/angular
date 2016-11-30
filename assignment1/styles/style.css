@@ -1,0 +1,15 @@
+.green {
+    color: green;
+}
+
+.greenMealBorder {
+    border: 1px solid green;
+}
+
+.red {
+    color: red;
+}
+
+.redMealBorder {
+    border: 1px solid red;
+}
