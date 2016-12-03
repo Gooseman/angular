@@ -1,7 +1,6 @@
 (function () {
   'use strict'
   angular.module('counterApp', [])
-
   .controller('foodController', FoodController);
 
   FoodController.$inject = ['$scope', '$filter'];
@@ -12,35 +11,34 @@
 
     $scope.countItems = function() {
       if ($scope.foodList.length == 0) {
-        $scope.mealResult = 'Please enter data first';
-        $scope.mealInputBorder = "redMealBorder";
-        $scope.mealResultColour = "red";
+        handleNoItemsCase($scope);
         return;
-        }
+      }
 
       $scope.mealResultColour = "green";
       $scope.mealInputBorder = "greenMealBorder";
 
       var allItems = $scope.foodList.split(",");
-      // var nonEmptyItems = $filter('filter')(allItems, function(val) { val.trim().length > 0;});
-      // $scope.foodItemCount = nonEmptyItems.length;
+      var count = allItems.filter(isNonEmptyString).length;
 
       $scope.mealResult = '';
 
-      var count = 0;
-
-      for (var index = 0; index < allItems.length; ++index) {
-        if (allItems[index].length > 0) {
-          count++;
-          }
-        }
-      
       if (count <= 3) {
         $scope.mealResult = 'Enjoy!';
       }
       else {
         $scope.mealResult = 'Too much!';
-        }
       }
     }
+  }
+    
+  function isNonEmptyString(val) {
+    return val.trim().length > 0;
+  }
+
+  function handleNoItemsCase(sc) {
+    sc.mealResult = 'Please enter data first';
+    sc.mealInputBorder = "redMealBorder";
+    sc.mealResultColour = "red";
+  }
 })();
